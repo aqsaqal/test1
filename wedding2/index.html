@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sophia & Daniel — Wedding</title>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1014;
+    --panel: #161923;
+    --text: #e8e3d8;
+    --muted: #9a937f;
+    --gold: #c8a96a;
+    --line: #2a2d36;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    scroll-behavior: smooth;
+  }
+  .serif { font-family: 'Italiana', serif; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    position: relative;
+    background:
+      radial-gradient(ellipse at center, rgba(14,16,20,0.4), rgba(14,16,20,0.95)),
+      url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+  }
+  .hero::before, .hero::after {
+    content: "";
+    position: absolute;
+    left: 50%; transform: translateX(-50%);
+    width: 1px;
+    height: 60px;
+    background: var(--gold);
+  }
+  .hero::before { top: 40px; }
+  .hero::after { bottom: 40px; }
+
+  .monogram {
+    font-family: 'Italiana', serif;
+    color: var(--gold);
+    font-size: 1.25rem;
+    letter-spacing: 0.5em;
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(3.5rem, 12vw, 9rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 .amp { color: var(--gold); font-style: italic; display: block; font-size: 0.6em; margin: 0.2em 0; }
+  .hero .tagline {
+    color: var(--muted);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-top: 1.5rem;
+  }
+  .hero .date-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.25em;
+  }
+  .hero .date-line span.dot { color: var(--gold); }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .section-head { text-align: center; margin-bottom: 3rem; }
+  .section-head .eyebrow {
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .section-head h2 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  /* INTRO */
+  .intro p {
+    max-width: 640px;
+    margin: 0 auto 1.25rem;
+    text-align: center;
+    color: var(--text);
+    font-weight: 300;
+    font-size: 1.1rem;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline .step {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    border-right: 1px solid var(--line);
+  }
+  .timeline .step:last-child { border-right: none; }
+  .timeline .time {
+    font-family: 'Italiana', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .timeline .name {
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* VENUE */
+  .venues {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .venue {
+    background: var(--panel);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border: 1px solid var(--line);
+  }
+  .venue h3 {
+    font-family: 'Italiana', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+  .venue address {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 1rem;
+  }
+  .venue a {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  /* COUNTDOWN */
+  .countdown-wrap {
+    background: var(--panel);
+    padding: 4rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+  .countdown .cell .n {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--gold);
+    line-height: 1;
+  }
+  .countdown .cell .l {
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  /* RSVP */
+  .rsvp form {
+    display: grid;
+    gap: 1rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .rsvp input, .rsvp select, .rsvp textarea {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 1rem;
+  }
+  .rsvp input:focus, .rsvp select:focus, .rsvp textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+  .rsvp button {
+    padding: 1.1rem;
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .rsvp button:hover {
+    background: var(--gold);
+    color: var(--bg);
+  }
+  .rsvp .ok {
+    text-align: center;
+    color: var(--gold);
+    font-family: 'Italiana', serif;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    display: none;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  footer .mono {
+    font-family: 'Italiana', serif;
+    color: var(--gold);
+    font-size: 3rem;
+    letter-spacing: 0.15em;
+  }
+  footer .sub {
+    color: var(--muted);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div>
+    <p class="monogram">S &nbsp;·&nbsp; D</p>
+    <h1>Sophia<span class="amp">&amp;</span>Daniel</h1>
+    <p class="tagline">Are getting married</p>
+    <p class="date-line">
+      <span>11</span><span class="dot">·</span><span>10</span><span class="dot">·</span><span>2026</span>
+    </p>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="section-head">
+    <p class="eyebrow">An Invitation</p>
+    <h2>With much love</h2>
+  </div>
+  <p>After five years of shared adventures, late-night conversations, and quiet Sunday mornings, we are finally getting married.</p>
+  <p>We would be delighted to have you join us for an evening of vows, feasting, and dancing beneath the stars.</p>
+</section>
+
+<div class="countdown-wrap">
+  <div class="section-head" style="margin-bottom:1rem">
+    <p class="eyebrow">The moment is near</p>
+    <h2 class="serif">Counting the days</h2>
+  </div>
+  <div class="countdown" id="countdown">
+    <div class="cell"><div class="n" id="d">00</div><div class="l">Days</div></div>
+    <div class="cell"><div class="n" id="h">00</div><div class="l">Hours</div></div>
+    <div class="cell"><div class="n" id="m">00</div><div class="l">Minutes</div></div>
+    <div class="cell"><div class="n" id="s">00</div><div class="l">Seconds</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="section-head">
+    <p class="eyebrow">The Evening</p>
+    <h2>Order of the Day</h2>
+  </div>
+  <div class="timeline">
+    <div class="step"><span class="time">16:00</span><span class="name">Arrival</span></div>
+    <div class="step"><span class="time">16:30</span><span class="name">Ceremony</span></div>
+    <div class="step"><span class="time">18:00</span><span class="name">Cocktails</span></div>
+    <div class="step"><span class="time">19:30</span><span class="name">Dinner</span></div>
+    <div class="step"><span class="time">21:30</span><span class="name">Dancing</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <p class="eyebrow">Location</p>
+    <h2>Where &amp; When</h2>
+  </div>
+  <div class="venues">
+    <div class="venue">
+      <h3>The Ceremony</h3>
+      <p>Glasshouse at Hartwood Estate</p>
+      <address>
+        47 Vineyard Drive<br/>
+        Napa Valley, California
+      </address>
+      <a href="#">View map</a>
+    </div>
+    <div class="venue">
+      <h3>The Reception</h3>
+      <p>Hartwood Barn &amp; Gardens</p>
+      <address>
+        Immediately following the ceremony<br/>
+        Black-tie optional
+      </address>
+      <a href="#">View map</a>
+    </div>
+  </div>
+</section>
+
+<section class="rsvp">
+  <div class="section-head">
+    <p class="eyebrow">Kindly respond</p>
+    <h2>RSVP</h2>
+  </div>
+  <form onsubmit="event.preventDefault(); document.querySelector('.ok').style.display='block'; this.reset();">
+    <input type="text" placeholder="Full name" required />
+    <input type="email" placeholder="Email address" required />
+    <select required>
+      <option value="">Your response</option>
+      <option>Accepts with pleasure</option>
+      <option>Declines with regret</option>
+    </select>
+    <input type="text" placeholder="Song you'd love to dance to" />
+    <textarea rows="3" placeholder="Dietary notes or a message"></textarea>
+    <button type="submit">Send RSVP</button>
+    <p class="ok">Thank you — we look forward to celebrating with you.</p>
+  </form>
+</section>
+
+<footer>
+  <div class="mono">S &nbsp;·&nbsp; D</div>
+  <div class="sub">Eleven · October · Twenty Twenty-Six</div>
+</footer>
+
+<script>
+  const t = new Date('2026-10-11T16:00:00').getTime();
+  function tick() {
+    const diff = Math.max(0, t - Date.now());
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('d').textContent = String(d).padStart(2,'0');
+    document.getElementById('h').textContent = String(h).padStart(2,'0');
+    document.getElementById('m').textContent = String(m).padStart(2,'0');
+    document.getElementById('s').textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
