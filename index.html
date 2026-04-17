@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emma & James — Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf5ef;
+    --blush: #e9d4c4;
+    --sage: #8a9a82;
+    --ink: #3b342b;
+    --gold: #b89968;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  .script { font-family: 'Great Vibes', cursive; color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background:
+      linear-gradient(rgba(250,245,239,0.6), rgba(250,245,239,0.9)),
+      url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  }
+  .hero .together { letter-spacing: 0.4em; font-size: 0.9rem; text-transform: uppercase; color: var(--sage); }
+  .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 10vw, 7rem); color: var(--ink); margin: 1rem 0; }
+  .hero .amp { color: var(--gold); }
+  .hero .date {
+    letter-spacing: 0.3em;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gold);
+    display: inline-block;
+  }
+  .hero .invite { margin-top: 2rem; font-style: italic; font-size: 1.25rem; max-width: 500px; }
+
+  /* SECTION */
+  section {
+    padding: 5rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  section h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  section .subtitle {
+    letter-spacing: 0.3em;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 2.5rem;
+  }
+
+  /* STORY */
+  .story p { font-size: 1.15rem; max-width: 650px; margin: 0 auto 1rem; }
+
+  /* COUNTDOWN */
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .countdown div {
+    background: #fff;
+    border: 1px solid var(--blush);
+    padding: 1.25rem 1.5rem;
+    min-width: 90px;
+    border-radius: 4px;
+  }
+  .countdown .num { font-size: 2.25rem; color: var(--gold); font-weight: 500; }
+  .countdown .label { letter-spacing: 0.2em; font-size: 0.75rem; text-transform: uppercase; color: var(--sage); }
+
+  /* DETAILS */
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--blush);
+    padding: 2rem 1.5rem;
+    border-radius: 4px;
+  }
+  .card h3 {
+    font-family: 'Great Vibes', cursive;
+    color: var(--gold);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .card .when { letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.85rem; color: var(--sage); margin-bottom: 0.75rem; }
+  .card p { font-size: 1.05rem; }
+
+  /* RSVP */
+  .rsvp form {
+    display: grid;
+    gap: 1rem;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .rsvp input, .rsvp select, .rsvp textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--blush);
+    background: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 4px;
+    color: var(--ink);
+  }
+  .rsvp button {
+    padding: 0.9rem 1.5rem;
+    background: var(--sage);
+    color: #fff;
+    border: none;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .rsvp button:hover { background: var(--ink); }
+  .rsvp .ok { color: var(--sage); font-style: italic; margin-top: 1rem; display: none; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: var(--blush);
+    color: var(--ink);
+  }
+  footer .names { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--ink); }
+  footer p { font-size: 0.95rem; margin-top: 0.5rem; }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    letter-spacing: 0.5em;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="together">Together with their families</p>
+  <h1>Emma <span class="amp">&amp;</span> James</h1>
+  <p class="date">Saturday • September 14, 2026</p>
+  <p class="invite">…request the honour of your presence as they celebrate their marriage</p>
+</header>
+
+<section class="story">
+  <h2>Our Story</h2>
+  <p class="subtitle">How it began</p>
+  <p>We met on a rainy afternoon in a little bookshop on Charing Cross Road, both reaching for the last copy of the same novel. Three years, countless adventures, and one very enthusiastic proposal later, we're ready to say "I do."</p>
+  <p>We would be honoured to have you share in our joy as we begin this next chapter together.</p>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<section class="countdown-section">
+  <h2>Counting Down</h2>
+  <p class="subtitle">Until we say I do</p>
+  <div class="countdown" id="countdown">
+    <div><div class="num" id="days">00</div><div class="label">Days</div></div>
+    <div><div class="num" id="hours">00</div><div class="label">Hours</div></div>
+    <div><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
+    <div><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<section class="details">
+  <h2>The Details</h2>
+  <p class="subtitle">Join us</p>
+  <div class="details-grid">
+    <div class="card">
+      <h3>Ceremony</h3>
+      <p class="when">3:00 PM</p>
+      <p>St. Mary's Chapel</p>
+      <p>12 Rosewood Lane</p>
+      <p>Cotswolds, UK</p>
+    </div>
+    <div class="card">
+      <h3>Reception</h3>
+      <p class="when">5:30 PM</p>
+      <p>Willowbrook Manor</p>
+      <p>Dinner, Dancing &amp; Toasts</p>
+      <p>Dress: Garden Formal</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<section class="rsvp">
+  <h2>RSVP</h2>
+  <p class="subtitle">Kindly reply by August 1, 2026</p>
+  <form id="rsvpForm" onsubmit="event.preventDefault(); document.getElementById('ok').style.display='block'; this.reset();">
+    <input type="text" placeholder="Your full name" required />
+    <input type="email" placeholder="Email address" required />
+    <select required>
+      <option value="">Will you attend?</option>
+      <option>Joyfully accepts</option>
+      <option>Regretfully declines</option>
+    </select>
+    <input type="number" min="0" max="4" placeholder="Number of guests (including you)" />
+    <textarea rows="3" placeholder="Dietary preferences or a message for the couple"></textarea>
+    <button type="submit">Send Reply</button>
+    <p class="ok" id="ok">Thank you — we can't wait to celebrate with you!</p>
+  </form>
+</section>
+
+<footer>
+  <p class="names">Emma &amp; James</p>
+  <p>14 . 09 . 2026</p>
+</footer>
+
+<script>
+  const weddingDate = new Date('2026-09-14T15:00:00').getTime();
+  function tick() {
+    const now = Date.now();
+    const diff = Math.max(0, weddingDate - now);
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('days').textContent = String(d).padStart(2, '0');
+    document.getElementById('hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
